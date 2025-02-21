@@ -5,7 +5,18 @@ var random;
 var score = 0;
 var timer = 60;
 var hit;
-var start = false;
+let start = false;
+
+// start game
+function startthegame() {
+  score = 0;
+  timer = 60;
+  document.querySelector(".score").innerHTML = score;
+  document.querySelector(".timer").innerHTML = timer;
+  document.querySelector(".btn").disabled = true;
+  makebubble();
+  runtime();
+}
 
 //creating bubble
 function makebubble() {
@@ -26,19 +37,26 @@ function attachBubbleEvents() {
 }
 
 // timer
-document.querySelector(".btn").addEventListener("click", runtime);
 function runtime() {
-  document.querySelector(".btn").disabled = true;
   let timeid = setInterval(decrese, 1000);
   function decrese() {
     if (timer > 0) {
-      document.querySelector(".timer").innerHTML = timer;
       timer--;
+      document.querySelector(".timer").innerHTML = timer;
     } else {
       clearInterval(timeid);
-      document.querySelector("#main").innerHTML = `game is over`;
+      // document.querySelector("#main").innerHTML = `game is over`;
+      endgame();
     }
   }
+}
+
+//endgame
+function endgame() {
+  document.querySelector(".btn").disabled = false;
+  document.querySelector(
+    "#main"
+  ).innerHTML = `game is over,your score is ${score}`;
 }
 
 //hit
@@ -46,7 +64,6 @@ function newhit() {
   hit = Math.floor(Math.random() * 10);
   document.querySelector(".hit").innerHTML = hit;
 }
-newhit();
 
 //score
 function check(event) {
@@ -67,5 +84,5 @@ function increaseScore() {
 }
 
 //initialize game
-makebubble();
+document.querySelector(".btn").addEventListener("click", startthegame);
 newhit();
