@@ -13,6 +13,15 @@ body {
   height: 100%;
   background-color: rgb(79, 176, 105);
 }
+.rule{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin:20px;
+  gap:3px;
+  font-size:1rem;
+}
 .contaner {
   width: 80%;
   height: 70%;
@@ -29,6 +38,7 @@ body {
 }
 .ele {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 10px;
@@ -69,7 +79,10 @@ body {
   align-items: center;
   justify-content: center;
   color: white;
+  font-weight: 800;
+  font-size: large;
 }
+
 .bubble:hover{
     cursor: pointer;
       background-color: rgb(28, 87, 28) ;
